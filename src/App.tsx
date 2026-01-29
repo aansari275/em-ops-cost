@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Search, FileText, LogOut, X } from 'lucide-react';
 import { collection, getDocs, doc, setDoc } from 'firebase/firestore';
 import { db, COLLECTIONS } from './lib/firebase';
-import { formatINR, formatUSD } from './lib/utils';
+import { formatINR } from './lib/utils';
 import { PinLogin, isAuthenticated, logout } from './components/PinLogin';
 
 const queryClient = new QueryClient();
@@ -234,23 +234,15 @@ function AppContent() {
                   <p className="font-semibold text-gray-900">{selectedOps.poNumber || '-'}</p>
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider">PO Value</p>
-                  <p className="font-semibold text-gray-900">
-                    {selectedOps.poValue ? formatUSD(selectedOps.poValue) : '-'}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider">Status</p>
-                  <span className={`inline-block px-2 py-0.5 text-xs font-medium rounded-full ${
-                    selectedOps.status === 'shipped' ? 'bg-green-100 text-green-700' :
-                    selectedOps.status === 'in_production' ? 'bg-blue-100 text-blue-700' :
-                    'bg-gray-100 text-gray-700'
-                  }`}>
-                    {selectedOps.status || 'open'}
-                  </span>
-                </div>
+              <div>
+                <p className="text-xs text-gray-500 uppercase tracking-wider">Status</p>
+                <span className={`inline-block px-2 py-0.5 text-xs font-medium rounded-full ${
+                  selectedOps.status === 'shipped' ? 'bg-green-100 text-green-700' :
+                  selectedOps.status === 'in_production' ? 'bg-blue-100 text-blue-700' :
+                  'bg-gray-100 text-gray-700'
+                }`}>
+                  {selectedOps.status || 'open'}
+                </span>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
