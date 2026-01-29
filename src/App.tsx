@@ -62,15 +62,6 @@ function AppContent() {
     setAuthenticated(false);
   };
 
-  if (!authenticated) {
-    return <PinLogin onSuccess={() => setAuthenticated(true)} />;
-  }
-
-  // Load data on mount
-  useEffect(() => {
-    loadData();
-  }, []);
-
   const loadData = async () => {
     setLoading(true);
     try {
@@ -114,6 +105,17 @@ function AppContent() {
     }
     setLoading(false);
   };
+
+  // Load data on mount (must be before any conditional returns)
+  useEffect(() => {
+    if (authenticated) {
+      loadData();
+    }
+  }, [authenticated]);
+
+  if (!authenticated) {
+    return <PinLogin onSuccess={() => setAuthenticated(true)} />;
+  }
 
   const handleCostChange = (opsNo: string, field: keyof OpsCost, value: number) => {
     setCosts(prev => prev.map(cost =>

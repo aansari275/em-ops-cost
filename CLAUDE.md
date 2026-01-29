@@ -8,6 +8,11 @@ Track production costs for each OPS (Order Processing Sheet) at Eastern Mills. U
 - **GitHub:** https://github.com/aansari275/em-ops-cost
 - **Netlify Site ID:** 661a91ff-2c86-4fae-9bc1-9ff909a64e6d
 
+## Login
+- **PIN:** `1234`
+- Session stored in localStorage (persists across browser sessions)
+- Logout button in header
+
 ## Tech Stack
 - React 18 + TypeScript, Vite, Tailwind CSS
 - Firebase Firestore (shared `easternmillscom` project)
