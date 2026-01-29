@@ -51,10 +51,12 @@ interface OpsCost {
 Fetches all OPS numbers to populate the table.
 
 ## Features
+- PIN login (1234) with session persistence
 - Simple table view - one row per OPS
 - Auto-save on blur (when you click out of a field)
 - Search by OPS number or buyer name
 - Shows all OPS from orders system
+- Click OPS number to view order details popup (buyer, PO number, status, pcs, sqm, ship date, merchant)
 
 ## Cross-App Integration
 - **Orders App** reads from `ops_costs` to display costing summary in admin section
